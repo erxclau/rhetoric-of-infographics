@@ -14,6 +14,30 @@
         --not-wearing: rgb(193, 87, 87);
 
         --work: rgb(54, 117, 211);
+        --transit: rgb(217, 230, 95);
+        --academics: rgb(48, 220, 114);
+        --chilling: rgb(84, 98, 87);
+        --friends: rgb(219, 64, 224);
+      }
+
+      .work {
+        background-color: var(--work);
+      }
+
+      .transit {
+        background-color: var(--transit);
+      }
+
+      .academics {
+        background-color: var(--academics);
+      }
+
+      .chilling {
+        background-color: var(--chilling);
+      }
+
+      .friends {
+        background-color: var(--friends);
       }
 
       html,
@@ -24,26 +48,22 @@
           Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
           sans-serif;
         font-size: 16px;
+        background-color: black;
       }
 
       main > section {
         min-height: 100vh;
         padding: 1rem;
-      }
-
-      .landing {
-        background-color: black;
         color: white;
-
-        padding-left: 1rem;
+        box-sizing: border-box;
       }
 
-      .landing h1 {
+      #landing h1 {
         font-size: calc(1em + 6vw);
         margin: 0;
       }
 
-      .landing h2 {
+      section h2 {
         font-size: calc(1em + 2vw);
         padding-left: 2rem;
         margin: 0;
@@ -57,13 +77,13 @@
       #hero {
         display: flex;
         gap: 1rem;
+        justify-content: center;
+        align-items: center;
       }
 
-      @media screen and (max-width: 900px) {
+      @media screen and (max-width: 600px) {
         #hero {
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
         }
       }
 
@@ -86,7 +106,7 @@
         opacity: 0.5;
       }
 
-      #hero .parent {
+      #hero #wrapper .parent {
         position: absolute;
         opacity: 0.7;
         width: var(--wrapper-photo-width);
@@ -103,7 +123,7 @@
         border: var(--border-width) solid white;
       }
 
-      #hero .child {
+      #hero #wrapper .child {
         opacity: 0.7;
         width: calc(var(--wrapper-photo-width) * var(--child-to-wrapper-ratio));
         background: linear-gradient(
@@ -123,31 +143,92 @@
       .front {
         transform: translateZ(0px);
       }
+
+      .legend {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      @media screen and (max-width: 900px) {
+        #landing .legend {
+          display: none;
+        }
+      }
+
+      .legend div.parent {
+        width: 30px;
+        border-radius: 7.5px;
+        border: 1px solid white;
+        flex-shrink: 0;
+      }
+
+      .legend .item {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      #calendar {
+        width: 100%;
+      }
+
+      #calendar .legend {
+        position: sticky;
+        top: 1rem;
+        margin-top: 1rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      #calendar .legend .parent {
+        width: 25px;
+        aspect-ratio: 1 / 1;
+        border: none;
+      }
     </style>
   </head>
   <body>
     <main>
-      <section class="landing">
+      <section id="landing">
         <h1>A month of BeReal</h1>
         <h2>by Eric Lau</h2>
-        <p style="max-width: 600px;">
+        <p style="max-width: 600px">
           BeReal is a social media app. It sends you a notification at a random
           time every day telling you to show what you're doing. In this BeReal,
           I'm
           <b class="highlight" style="color: var(--wearing)">wearing</b> a hat
           but
           <b class="highlight" style="color: var(--not-wearing)">not wearing</b>
-          a mask. I'm doing something <b class="highlight" style="color: var(--work)">work-related</b> — The Michigan Daily in this case.
+          a mask. I'm doing something
+          <b class="highlight" style="color: var(--work)">work-related</b> — The
+          Michigan Daily in this case.
         </p>
         <div id="hero">
-          <img src="hero.jpeg" width="275px" height="auto" alt="Eric Lau wearing a green hat and holding The Michigan Daily's 2022 Orientation Guide."/>
+          <img
+            src="hero.jpeg"
+            width="275px"
+            height="auto"
+            alt="Eric Lau wearing a green hat and holding The Michigan Daily's 2022 Orientation Guide."
+          />
           <div
+            id="wrapper"
             style="
               width: calc(275px + 2px + 2px);
               height: calc(4 / 3 * 275px + 2px + 2px);
             "
           >
-            <img id="overlay" src="hero.jpeg" width="275px" height="auto" alt="Eric Lau wearing a green hat and holding The Michigan Daily's 2022 Orientation Guide." />
+            <img
+              id="overlay"
+              src="hero.jpeg"
+              width="275px"
+              height="auto"
+              alt="Eric Lau wearing a green hat and holding The Michigan Daily's 2022 Orientation Guide."
+            />
             <div class="parent">
               <div class="child"></div>
             </div>
@@ -166,9 +247,57 @@
               </p>
             </div>
           </div>
+          <div class="legend">
+            <div class="item">
+              <div class="parent work"></div>
+              <div>Doing something related to work.</div>
+            </div>
+            <div class="item">
+              <div class="parent transit"></div>
+              <div>Transiting to a location.</div>
+            </div>
+            <div class="item">
+              <div class="parent friends"></div>
+              <div>Doing something with friends.</div>
+            </div>
+            <div class="item">
+              <div class="parent academics"></div>
+              <div>In class or working on assignments.</div>
+            </div>
+            <div class="item">
+              <div class="parent chilling"></div>
+              <div>Nothing in particular.</div>
+            </div>
+          </div>
         </div>
       </section>
-      <section></section>
+      <section id="calendar">
+        <h2>Here's my September</h2>
+        <div class="legend">
+          <div class="item">
+            <div class="parent work"></div>
+            <b>Work</b>
+          </div>
+          <div class="item">
+            <div class="parent transit"></div>
+            <b>Transit</b>
+          </div>
+          <div class="item">
+            <div class="parent friends"></div>
+            <b>Friends</b>
+          </div>
+          <div class="item">
+            <div class="parent academics"></div>
+            <b>Academics</b>
+          </div>
+          <div class="item">
+            <div class="parent chilling"></div>
+            <b>Nothing</b>
+          </div>
+        </div>
+        <figure id="graphic"></figure>
+      </section>
     </main>
+    <script src="./main.js"></script>
   </body>
 </html>
