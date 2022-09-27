@@ -1,0 +1,18 @@
+{
+  "name": "bereal",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "erxclau <ericlau41802@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-dsv": "^2.0.3",
+    "vite": "^3.1.3"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "d3": "^7.6.1"
+  }
+}
