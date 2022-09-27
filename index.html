@@ -168,14 +168,14 @@
         gap: 0.5rem;
       }
 
-      @media screen and (max-width: 900px) {
+      @media screen and (max-width: 1000px) {
         #landing .legend {
           display: none;
         }
       }
 
       .mini.parent {
-        --wrapper-photo-width: 45px;
+        --wrapper-photo-width: 40px;
         --border-radius: 7.5px;
         --border-width: 1px;
         flex-shrink: 0;
@@ -197,7 +197,7 @@
       #calendar .legend {
         position: sticky;
         background-color: black;
-        top: 1rem;
+        top: 0;
         padding-top: 1rem;
         padding-bottom: 1rem;
         flex-direction: row;
@@ -328,6 +328,10 @@
               <div class="mini parent chilling"></div>
               <div>Nothing in particular.</div>
             </div>
+            <div class="item">
+              <div class="mini parent" style="border: 1px white dashed"></div>
+              <div>Did not post a BeReal.</div>
+            </div>
           </div>
         </div>
       </section>
@@ -352,6 +356,10 @@
           <div class="item">
             <div class="mini parent chilling"></div>
             <b>Nothing</b>
+          </div>
+          <div class="item">
+            <div class="mini parent" style="border: 1px white dashed;"></div>
+            <b>Did not post</b>
           </div>
         </div>
         <figure id="graphic"></figure>
