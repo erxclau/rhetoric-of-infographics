@@ -2,46 +2,173 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Picasso</title>
+    <title>A month of BeReal</title>
     <style>
+      :root {
+        --wrapper-photo-width: 275px;
+        --child-to-wrapper-ratio: 200 / 700;
+        --border-width: 2px;
+        --wearing: rgb(130, 197, 130);
+        --not-wearing: rgb(193, 87, 87);
+
+        --work: rgb(54, 117, 211);
+      }
+
       html,
       body {
         margin: 0;
         padding: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+        font-size: 16px;
       }
 
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      main > section {
+        min-height: 100vh;
+        padding: 1rem;
       }
 
-      header {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        padding-left: 20px;
-        font-size: 20px;
+      .landing {
+        background-color: black;
+        color: white;
+
+        padding-left: 1rem;
       }
 
-      figure {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
+      .landing h1 {
+        font-size: calc(1em + 6vw);
+        margin: 0;
+      }
+
+      .landing h2 {
+        font-size: calc(1em + 2vw);
+        padding-left: 2rem;
+        margin: 0;
+      }
+
+      #hero {
+        margin: 1rem;
+        margin-left: 0;
+      }
+
+      #hero {
+        display: flex;
+        gap: 1rem;
+      }
+
+      @media screen and (max-width: 900px) {
+        #hero {
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      #hero img {
+        width: var(--wrapper-photo-width);
+        height: auto;
+        border-radius: 1rem;
+      }
+
+      .parent {
+        position: relative;
+        aspect-ratio: 3 / 4;
+        height: auto;
+        border-radius: 1rem;
+        border: var(--border-width) solid white;
+      }
+
+      #hero #overlay {
+        position: absolute;
+        opacity: 0.5;
+      }
+
+      #hero .parent {
+        position: absolute;
+        opacity: 0.7;
+        width: var(--wrapper-photo-width);
+        background-color: var(--work);
+      }
+
+      .child {
+        position: absolute;
+        top: 0.25rem;
+        left: 0.25rem;
+        aspect-ratio: 3 / 4;
+        height: auto;
+        border-radius: 1rem;
+        border: var(--border-width) solid white;
+      }
+
+      #hero .child {
+        opacity: 0.7;
+        width: calc(var(--wrapper-photo-width) * var(--child-to-wrapper-ratio));
+        background: linear-gradient(
+          to bottom,
+          var(--wearing) 0,
+          var(--wearing) 50%,
+          var(--not-wearing) 50%,
+          var(--not-wearing) 100%
+        );
+      }
+
+      .highlight {
+        text-shadow: #000 0px 0px 10px;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .front {
+        transform: translateZ(0px);
       }
     </style>
   </head>
-
   <body>
-    <!-- <header>
-      <div><b>a look at 1153 picassos stripped down to color</b></div>
-      <div>Eric Lau</div>
-      <div>
-        Look at the code
-        <a href="https://github.com/ericlau00/picasso" target="_blank">here</a>
-      </div>
-      <div>Best viewed on with a device with a width of 1200px or higher</div>
-    </header> -->
-    <div id="graphic">
-    </div>
-    <script type="module" src="main.js"></script>
+    <main>
+      <section class="landing">
+        <h1>A month of BeReal</h1>
+        <h2>by Eric Lau</h2>
+        <p style="max-width: 600px;">
+          BeReal is a social media app. It sends you a notification at a random
+          time every day telling you to show what you're doing. In this BeReal,
+          I'm
+          <b class="highlight" style="color: var(--wearing)">wearing</b> a hat
+          but
+          <b class="highlight" style="color: var(--not-wearing)">not wearing</b>
+          a mask. I'm doing something <b class="highlight" style="color: var(--work)">work-related</b> — The Michigan Daily in this case.
+        </p>
+        <div id="hero">
+          <img src="hero.jpeg" width="275px" height="auto" />
+          <div
+            style="
+              width: calc(275px + 2px + 2px);
+              height: calc(4 / 3 * 275px + 2px + 2px);
+            "
+          >
+            <img id="overlay" src="hero.jpeg" width="275px" height="auto" />
+            <div class="parent">
+              <div class="child"></div>
+            </div>
+            <div class="front" style="margin-top: 2rem; margin-left: 60px">
+              <p>
+                ———
+                <b class="highlight" style="color: var(--wearing)">wearing</b> a
+                hat
+              </p>
+              <p>
+                ———
+                <b class="highlight" style="color: var(--not-wearing)"
+                  >not wearing</b
+                >
+                a mask
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section></section>
+    </main>
   </body>
 </html>
