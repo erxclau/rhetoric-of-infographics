@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>A month of BeReal</title>
+    <title>A September of BeReal</title>
     <style>
       :root {
         --wrapper-photo-width: 275px;
         --child-to-wrapper-ratio: 200 / 700;
         --border-width: 2px;
+        --border-radius: 1rem;
         --wearing: rgb(130, 197, 130);
         --not-wearing: rgb(193, 87, 87);
 
@@ -97,8 +98,9 @@
         position: relative;
         aspect-ratio: 3 / 4;
         height: auto;
-        border-radius: 1rem;
+        border-radius: var(--border-radius);
         border: var(--border-width) solid white;
+        width: var(--wrapper-photo-width);
       }
 
       #hero #overlay {
@@ -109,7 +111,6 @@
       #hero #wrapper .parent {
         position: absolute;
         opacity: 0.7;
-        width: var(--wrapper-photo-width);
         background-color: var(--work);
       }
 
@@ -119,13 +120,13 @@
         left: 0.25rem;
         aspect-ratio: 3 / 4;
         height: auto;
-        border-radius: 1rem;
+        border-radius: var(--border-radius);
         border: var(--border-width) solid white;
+        width: calc(var(--wrapper-photo-width) * var(--child-to-wrapper-ratio));
       }
 
       #hero #wrapper .child {
         opacity: 0.7;
-        width: calc(var(--wrapper-photo-width) * var(--child-to-wrapper-ratio));
         background: linear-gradient(
           to bottom,
           var(--wearing) 0,
@@ -157,10 +158,10 @@
         }
       }
 
-      .legend div.parent {
-        width: 30px;
-        border-radius: 7.5px;
-        border: 1px solid white;
+      .mini.parent {
+        --wrapper-photo-width: 45px;
+        --border-radius: 7.5px;
+        --border-width: 1px;
         flex-shrink: 0;
       }
 
@@ -172,12 +173,16 @@
 
       #calendar {
         width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
       }
 
       #calendar .legend {
         position: sticky;
         top: 1rem;
         margin-top: 1rem;
+        margin-bottom: 1rem;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
@@ -190,12 +195,50 @@
         aspect-ratio: 1 / 1;
         border: none;
       }
+
+      #graphic {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 1rem;
+        place-items: center;
+      }
+
+      #graphic .mini.parent {
+        --wrapper-photo-width: 75px;
+        --border-radius: 10px;
+      }
+
+      #graphic .child {
+        border-radius: 5px;
+      }
+
+      @media screen and (max-width: 700px) {
+        #graphic .mini.parent {
+          --wrapper-photo-width: 50px;
+          --border-radius: 7px;
+        }
+
+        #graphic .child {
+          border-radius: 3px;
+        }
+      }
+
+      @media screen and (max-width: 500px) {
+        #graphic .mini.parent {
+          --wrapper-photo-width: 30px;
+          --border-radius: 5px;
+        }
+
+        #graphic .child {
+          border-radius: 2px;
+        }
+      }
     </style>
   </head>
   <body>
     <main>
       <section id="landing">
-        <h1>A month of BeReal</h1>
+        <h1>A September of BeReal</h1>
         <h2>by Eric Lau</h2>
         <p style="max-width: 600px">
           BeReal is a social media app. It sends you a notification at a random
@@ -249,55 +292,54 @@
           </div>
           <div class="legend">
             <div class="item">
-              <div class="parent work"></div>
+              <div class="mini parent work"></div>
               <div>Doing something related to work.</div>
             </div>
             <div class="item">
-              <div class="parent transit"></div>
+              <div class="mini parent transit"></div>
               <div>Transiting to a location.</div>
             </div>
             <div class="item">
-              <div class="parent friends"></div>
+              <div class="mini parent friends"></div>
               <div>Doing something with friends.</div>
             </div>
             <div class="item">
-              <div class="parent academics"></div>
+              <div class="mini parent academics"></div>
               <div>In class or working on assignments.</div>
             </div>
             <div class="item">
-              <div class="parent chilling"></div>
+              <div class="mini parent chilling"></div>
               <div>Nothing in particular.</div>
             </div>
           </div>
         </div>
       </section>
       <section id="calendar">
-        <h2>Here's my September</h2>
         <div class="legend">
           <div class="item">
-            <div class="parent work"></div>
+            <div class="mini parent work"></div>
             <b>Work</b>
           </div>
           <div class="item">
-            <div class="parent transit"></div>
+            <div class="mini parent transit"></div>
             <b>Transit</b>
           </div>
           <div class="item">
-            <div class="parent friends"></div>
+            <div class="mini parent friends"></div>
             <b>Friends</b>
           </div>
           <div class="item">
-            <div class="parent academics"></div>
+            <div class="mini parent academics"></div>
             <b>Academics</b>
           </div>
           <div class="item">
-            <div class="parent chilling"></div>
+            <div class="mini parent chilling"></div>
             <b>Nothing</b>
           </div>
         </div>
         <figure id="graphic"></figure>
       </section>
     </main>
-    <script src="./main.js"></script>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>
